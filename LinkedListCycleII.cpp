@@ -14,7 +14,7 @@ public:
         ListNode* node = head;
         while(node) {
             try {
-                int n = m.at(node);
+                m.at(node);
                 return node;
             }
             catch(const std::out_of_range& ex) {
