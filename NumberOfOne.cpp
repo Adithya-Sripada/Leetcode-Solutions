@@ -1,18 +1,21 @@
 #include <iostream>
+#include <string>
+#include <cmath>
+
 int countDigitOne(int n) {
     if(n <= 0) return 0;
-    if(n == 1) return 1;
-    int count = 0;
+    if(n <= 9) return 1;
     int x = n;
-    while(n > 0) {
-        int r = n%10;
+    int digits = 0;
+    int count = 0;
+    while(x > 0) {
+        int r = x%10;
         if(r == 1) count++;
-        n = n/10;
+        x = x/10;
+        digits++;
     }
-    std::cout << count << "\n";
-    return count + countDigitOne(x-1);
-}
 
-int main() {
-    std::cout << countDigitOne(13);
+    std::string nine(digits, '9');
+    if(std::to_string(n) == nine) return digits * pow(10, digits-1);
+    else return count + countDigitOne(n-1);
 }
